@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recall</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/app-icon32.png" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="panel">
+      <section class="hero">
+        <div class="hero-top">
+          <div class="brand-row">
+            <img src="../assets/recall-logo.png" alt="Recall logo" class="brand-logo" />
+            <p class="eyebrow">Recall</p>
+          </div>
+          <button id="theme-toggle" class="secondary theme-toggle-button" type="button">Dark mode</button>
+        </div>
+        <h1>Silent Study Memory Vault</h1>
+        <p class="subcopy">Runs quietly while you learn. Stores everything locally.</p>
+      </section>
+
+      <section class="toggle-card">
+        <div>
+          <p class="label">Study Mode</p>
+          <p id="study-mode-copy" class="hint">Capture educational sessions automatically.</p>
+        </div>
+        <label class="switch">
+          <input id="study-mode-toggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </section>
+
+      <section class="toggle-card compact">
+        <div>
+          <p class="label">Media Guard</p>
+          <p id="media-guard-copy" class="hint">Ignore trailers, entertainment, and low-confidence media captures.</p>
+        </div>
+        <label class="switch">
+          <input id="media-guard-toggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </section>
+
+      <section class="stats">
+        <article class="stat-card">
+          <span class="stat-label">Sessions</span>
+          <strong id="sessions-count">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Topics</span>
+          <strong id="topics-count">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Sources</span>
+          <strong id="sources-count">0</strong>
+        </article>
+      </section>
+
+      <p id="last-captured" class="footer-copy">No study sessions captured yet.</p>
+      <p id="trusted-mode-copy" class="footer-copy compact">Trusted study sources only: lectures, LMS pages, course platforms, The Helper, and local study files.</p>
+      <p id="source-guard-copy" class="footer-copy compact">SourceGuard preview will appear here for the active page.</p>
+
+      <section class="actions">
+        <button id="capture-now" class="primary">Capture this page</button>
+        <button id="open-dashboard" class="secondary">Open Recall</button>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+  </html>

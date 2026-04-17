@@ -1,0 +1,21 @@
+{
+  "name": "recall",
+  "version": "1.0.0",
+  "description": "`Recall` is the first build of your hackathon idea: a local-first browser extension that silently tracks educational sessions, extracts topics, and turns them into a study passport plus revision prompts.",
+  "main": "background.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "check": "node --check background.js && node --check content/content.js && node --check dashboard/dashboard.js && node --check dashboard/ai-model.mjs && node --check dashboard/asr-model.mjs && node --check dashboard/cloud-ai.mjs && node --check dashboard/document-import.mjs && node --check lib/shared.js && node --check lib/db.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@huggingface/transformers": "^3.8.1",
+    "jszip": "^3.10.1",
+    "pdfjs-dist": "^5.6.205"
+  }
+}

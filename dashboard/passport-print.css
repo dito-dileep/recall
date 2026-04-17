@@ -1,0 +1,233 @@
+:root {
+  color-scheme: light;
+  --ink: #212842;
+  --muted: #5f667d;
+  --line: #e8dcc9;
+  --panel: #f7f1e7;
+  --accent: #7d715d;
+  --accent-2: #f0e7d5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  color: var(--ink);
+  background: #f0e7d5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 24px 28px 12px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(33, 40, 66, 0.08);
+  box-shadow:
+    0 14px 26px rgba(33, 40, 66, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.74rem;
+  color: var(--accent);
+}
+
+.brand-row .eyebrow {
+  margin: 0;
+}
+
+.toolbar h1 {
+  margin: 0;
+}
+
+.toolbar-copy {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  font: inherit;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+}
+
+.primary {
+  background: linear-gradient(135deg, #f0e7d5, #fff9ef);
+  color: #212842;
+}
+
+.secondary {
+  background: white;
+  color: var(--ink);
+}
+
+.passport-root {
+  padding: 0 28px 28px;
+}
+
+.passport-sheet {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 28px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.passport-hero,
+.grid-two,
+.metric-grid,
+.module-grid,
+.session-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.passport-hero {
+  grid-template-columns: 1.4fr 1fr;
+  align-items: start;
+}
+
+.lead,
+.meta,
+.module-card p,
+.session-card p,
+.detail-list span {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.metric-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-grid article,
+.panel,
+.module-card,
+.session-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.metric-grid article span,
+.metric-grid article strong {
+  display: block;
+}
+
+.metric-grid article span {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.metric-grid article strong {
+  font-size: 1.3rem;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+.grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.clean-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.clean-list li {
+  margin-bottom: 10px;
+  overflow-wrap: anywhere;
+}
+
+.module-grid,
+.session-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.module-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .toolbar {
+    display: none;
+  }
+
+  .passport-root {
+    padding: 0;
+  }
+
+  .passport-sheet {
+    border: none;
+    border-radius: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .toolbar,
+  .passport-hero,
+  .grid-two,
+  .module-grid,
+  .session-grid {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .brand-row {
+    gap: 12px;
+  }
+
+  .brand-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+}

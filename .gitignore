@@ -1,0 +1,8 @@
+.env
+python_ai/.env
+python_ai/.venv/
+python_ai/__pycache__/
+node_modules/
+.chrome-dev-profile/
+.chrome-dev-profile-2/
+.chrome-ai-verify/

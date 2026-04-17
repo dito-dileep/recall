@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recall Printable Passport</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/app-icon32.png" />
+    <link rel="stylesheet" href="passport-print.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div>
+        <div class="brand-row">
+          <img src="../assets/recall-logo.png" alt="Recall logo" class="brand-logo" />
+          <div class="brand-copy">
+            <p class="eyebrow">Recall</p>
+            <h1>Printable Study Passport</h1>
+          </div>
+        </div>
+        <p id="toolbar-copy" class="toolbar-copy">Open the print dialog to save this as a PDF.</p>
+      </div>
+      <div class="toolbar-actions">
+        <button id="print-passport" class="primary">Print / Save as PDF</button>
+        <button id="close-passport" class="secondary">Close</button>
+      </div>
+    </header>
+
+    <main id="passport-root" class="passport-root"></main>
+
+    <script src="../lib/shared.js"></script>
+    <script src="passport-print.js"></script>
+  </body>
+</html>

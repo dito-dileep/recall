@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recall Dashboard</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/app-icon32.png" />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div>
+          <div class="brand-row">
+            <img src="../assets/recall-logo.png" alt="Recall logo" class="brand-logo" />
+            <div class="brand-copy">
+              <p class="eyebrow">Recall</p>
+              <h1>Study Memory Dashboard</h1>
+            </div>
+          </div>
+          <p class="subcopy">Turn scattered study sessions into a clear next step, a revision queue, and a guided AI study companion.</p>
+        </div>
+        <div class="hero-actions">
+          <button id="seed-demo" class="ghost">Load demo data</button>
+          <button id="clear-data" class="ghost danger">Clear data</button>
+          <button id="export-passport" class="primary">Printable passport</button>
+          <button id="export-anki" class="secondary">Flashcards</button>
+          <button id="toggle-theme" class="secondary theme-toggle-button" type="button">Dark mode</button>
+        </div>
+      </header>
+
+      <section class="stats-grid">
+        <article class="metric-card">
+          <span>Total Sessions</span>
+          <strong id="metric-sessions">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Unique Topics</span>
+          <strong id="metric-topics">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Learning Sources</span>
+          <strong id="metric-sources">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Recall Score</span>
+          <strong id="metric-recall-score">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Syllabus Coverage</span>
+          <strong id="metric-coverage">0%</strong>
+        </article>
+        <article class="metric-card">
+          <span>Cards Due</span>
+          <strong id="metric-due">0</strong>
+        </article>
+      </section>
+
+      <section class="workspace-toolbar">
+        <div class="workspace-copy-block">
+          <p class="eyebrow">Workspace</p>
+          <h2>Use Recall without getting lost</h2>
+          <p id="workspace-copy" class="subcopy">Switch between one job at a time: understand the product, study from your captures, import new material, or show judge-facing evidence.</p>
+        </div>
+        <nav id="workspace-nav" class="workspace-nav" aria-label="Recall workspace">
+          <button class="workspace-tab active" data-view="overview">Overview</button>
+          <button class="workspace-tab" data-view="study">Study Now</button>
+          <button class="workspace-tab" data-view="flashcards">Flashcards</button>
+          <button class="workspace-tab" data-view="import">Import & Syllabus</button>
+          <button class="workspace-tab" data-view="evidence">Evidence</button>
+        </nav>
+      </section>
+
+      <main class="content-grid">
+        <section id="overview-guide" class="panel overview-panel" data-workspace-view="overview">
+          <div class="panel-head">
+            <h2>Why Recall Makes Sense Fast</h2>
+            <p>A beginner-friendly and judge-friendly summary of what this extension already does.</p>
+          </div>
+          <div id="overview-guide-content" class="walkthrough-grid"></div>
+        </section>
+
+        <section class="panel momentum-panel" data-workspace-view="overview">
+          <div class="panel-head">
+            <h2>Weekly Momentum</h2>
+            <p>Use Recall like a habit tool, not only a memory vault.</p>
+          </div>
+          <div class="history-metrics momentum-metrics">
+            <article class="history-stat">
+              <span>Active Days</span>
+              <strong id="momentum-active-days">0/7</strong>
+            </article>
+            <article class="history-stat">
+              <span>Current Streak</span>
+              <strong id="momentum-streak">0</strong>
+            </article>
+            <article class="history-stat">
+              <span>Study Minutes</span>
+              <strong id="momentum-minutes">0</strong>
+            </article>
+            <article class="history-stat">
+              <span>Best Day</span>
+              <strong id="momentum-best-day">-</strong>
+            </article>
+          </div>
+          <div class="passport-columns momentum-columns">
+            <div>
+              <h3>This Week</h3>
+              <div id="momentum-bars" class="momentum-bars"></div>
+            </div>
+            <div>
+              <h3>Next Move</h3>
+              <div id="momentum-next" class="history-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel passport-panel" data-workspace-view="overview">
+          <div class="panel-head">
+            <h2>Study Passport</h2>
+            <p>What Recall understood from your actual learning trail.</p>
+          </div>
+          <p id="passport-headline" class="headline"></p>
+          <div class="passport-columns">
+            <div>
+              <h3>Focus Areas</h3>
+              <ul id="focus-areas" class="list"></ul>
+            </div>
+            <div>
+              <h3>Next Revision</h3>
+              <ul id="revision-areas" class="list"></ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel ai-panel" data-workspace-view="overview">
+          <div class="panel-head ai-panel-head">
+            <div>
+              <h2>Edge AI Copilot</h2>
+              <p>On-device semantic inference, memory-risk forecasting, and guided prompts.</p>
+            </div>
+            <div class="ai-actions">
+              <span id="deep-ai-state" class="history-pill">Fast local AI</span>
+              <button id="toggle-deep-ai" class="secondary">Enable Deep AI</button>
+            </div>
+          </div>
+          <p id="ai-headline" class="headline"></p>
+          <div class="history-metrics ai-metrics">
+            <article class="history-stat">
+              <span>Primary Subject</span>
+              <strong id="ai-primary-subject">-</strong>
+            </article>
+            <article class="history-stat">
+              <span>Learning Mode</span>
+              <strong id="ai-primary-intent">-</strong>
+            </article>
+            <article class="history-stat">
+              <span>AI Confidence</span>
+              <strong id="ai-confidence">0%</strong>
+            </article>
+            <article class="history-stat">
+              <span>Semantic Chunks</span>
+              <strong id="ai-chunks">0</strong>
+            </article>
+          </div>
+          <div class="passport-columns">
+            <div>
+              <h3>Subject Inference</h3>
+              <div id="ai-subject-bars" class="ai-bars"></div>
+            </div>
+            <div>
+              <h3>Learning Intent</h3>
+              <div id="ai-intent-bars" class="ai-bars"></div>
+            </div>
+          </div>
+          <div class="passport-columns">
+            <div>
+              <h3>Predicted Forgetting Risk</h3>
+              <div id="ai-risk-list" class="history-list"></div>
+            </div>
+            <div>
+              <h3>Generated Quiz Prompts</h3>
+              <div id="ai-prompt-list" class="history-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel placement-panel" data-workspace-view="overview">
+          <div class="panel-head">
+            <h2>Placement Snapshot</h2>
+            <p>Turn recent study activity into role-fit, interview talking points, and one project direction.</p>
+          </div>
+          <p id="placement-headline" class="headline"></p>
+          <div id="placement-grid" class="walkthrough-grid placement-grid"></div>
+        </section>
+
+        <section id="study-guide-panel" class="panel study-guide-panel" data-workspace-view="study" hidden>
+          <div class="panel-head">
+            <h2>Study Now</h2>
+            <p>Start from one clear place instead of guessing what to revise first.</p>
+          </div>
+          <div id="study-guide-content" class="study-guide-grid"></div>
+        </section>
+
+        <section class="panel session-mode-panel" data-workspace-view="study" hidden>
+          <div class="panel-head">
+            <h2>Guided Session Mode</h2>
+            <p>Move from notes -> flashcards -> quiz in one clear loop.</p>
+          </div>
+          <div id="session-mode-content" class="session-mode-grid"></div>
+        </section>
+
+        <section class="panel sessions-panel" data-workspace-view="study" hidden>
+          <div class="panel-head">
+            <h2>Readable Notes</h2>
+            <p>Each capture is rewritten as short study notes instead of raw browser history.</p>
+          </div>
+          <div id="sessions-list" class="session-list"></div>
+        </section>
+
+        <section class="panel flashcards-panel" data-workspace-view="flashcards" hidden>
+          <div class="panel-head ai-panel-head">
+            <div>
+              <h2>Visual Flashcards</h2>
+              <p>Flip, review, and grade cards inside Recall. Download TSV only if you want Anki later.</p>
+            </div>
+            <div class="ai-actions">
+              <button id="download-anki" class="secondary">Download TSV for Anki</button>
+            </div>
+          </div>
+          <div id="flashcards-stage" class="flashcards-stage"></div>
+        </section>
+
+        <section class="panel queue-panel" data-workspace-view="flashcards" hidden>
+          <div class="panel-head">
+            <h2>Review Queue</h2>
+            <p>These are the due and upcoming cards that Recall wants you to revisit next.</p>
+          </div>
+          <div id="revision-queue" class="queue"></div>
+        </section>
+
+        <section class="panel history-panel" data-workspace-view="flashcards" hidden>
+          <div class="panel-head">
+            <h2>Review History</h2>
+            <p>A clear view of how Recall adapts after every review decision.</p>
+          </div>
+          <div class="history-metrics">
+            <article class="history-stat">
+              <span>Total Reviews</span>
+              <strong id="review-total">0</strong>
+            </article>
+            <article class="history-stat">
+              <span>Retention Rate</span>
+              <strong id="review-retention">0%</strong>
+            </article>
+            <article class="history-stat">
+              <span>Mastered Topics</span>
+              <strong id="review-mastered">0</strong>
+            </article>
+            <article class="history-stat">
+              <span>Current Streak</span>
+              <strong id="review-streak">0</strong>
+            </article>
+          </div>
+          <div class="passport-columns">
+            <div>
+              <h3>Hardest Topics</h3>
+              <div id="review-focus-topics" class="history-list"></div>
+            </div>
+            <div>
+              <h3>Recent Review Activity</h3>
+              <div id="review-activity" class="history-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel trusted-sources-panel" data-workspace-view="import" hidden>
+          <div class="panel-head">
+            <h2>Trusted Study Sources</h2>
+            <p>Recall now prefers study-first sources and blocks messaging, chatter, and entertainment-heavy pages.</p>
+          </div>
+          <p id="trusted-sources-status" class="headline compact-headline">Study capture is focused on lectures, LMS pages, course platforms, SRM helpers, and local study files.</p>
+          <div class="trusted-source-badges">
+            <span class="topic-chip">YouTube lectures only</span>
+            <span class="topic-chip">Coursera</span>
+            <span class="topic-chip">Google Classroom</span>
+            <span class="topic-chip">Udemy</span>
+            <span class="topic-chip">SoloLearn</span>
+            <span class="topic-chip">NPTEL</span>
+            <span class="topic-chip">SWAYAM</span>
+            <span class="topic-chip">The Helper</span>
+            <span class="topic-chip">Local PDF / PPT / DOCX</span>
+            <span class="topic-chip">Offline Audio / Video</span>
+          </div>
+          <div class="walkthrough-grid trusted-source-grid">
+            <article class="walkthrough-card">
+              <span class="walkthrough-step">Quick launch</span>
+              <h3>Open trusted study hubs</h3>
+              <p>Jump straight into the sources Recall is designed to understand well.</p>
+              <div class="trusted-source-actions">
+                <button class="secondary mini-button" data-open-url="https://thehelpers.vercel.app/">Open The Helper</button>
+                <button class="secondary mini-button" data-open-url="https://thehelpers.vercel.app/semesters">Open Semesters</button>
+                <button class="secondary mini-button" data-open-url="https://classroom.google.com/">Open Classroom</button>
+                <button class="secondary mini-button" data-open-url="https://www.coursera.org/">Open Coursera</button>
+                <button class="secondary mini-button" data-open-url="https://nptel.ac.in/">Open NPTEL</button>
+                <button class="secondary mini-button" data-open-url="https://swayam.gov.in/">Open SWAYAM</button>
+              </div>
+            </article>
+            <article class="walkthrough-card">
+              <span class="walkthrough-step">Local files</span>
+              <h3>Capture study files from Brave</h3>
+              <p id="file-access-copy">Turn on file URL access in Brave if you want browser-opened study files from Downloads to be captured too.</p>
+              <div class="trusted-source-inline">
+                <span id="file-access-pill" class="history-pill">Checking file access</span>
+                <span class="panel-copy">Brave: Extensions -> Recall -> Details -> Allow access to file URLs.</span>
+              </div>
+            </article>
+            <article class="walkthrough-card">
+              <span class="walkthrough-step">The Helper flow</span>
+              <h3>Best way to use SRM resources</h3>
+              <ul class="clean-list trusted-source-list">
+                <li>Use semester and subject pages to capture unit names, PYQs, and revision structure.</li>
+                <li>If a resource opens in The Helper viewer, use Download and then import it into Document Studio for stronger notes and quiz cards.</li>
+                <li>Pair unit notes with PYQs so Recall can turn one subject page into a real revision path.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel source-guard-panel" data-workspace-view="import" hidden>
+          <div class="panel-head">
+            <h2>Personal Source Guard</h2>
+            <p>Tell Recall which extra domains you always want to trust or always want to ignore.</p>
+          </div>
+          <div class="passport-columns document-pack-columns">
+            <label class="provider-field">
+              <span>Always trust these domains</span>
+              <input id="trusted-domains-input" class="provider-input" type="text" placeholder="example.com, notes.example.edu" />
+            </label>
+            <label class="provider-field">
+              <span>Always block these domains</span>
+              <input id="blocked-domains-input" class="provider-input" type="text" placeholder="chat.example.com, social.example.org" />
+            </label>
+          </div>
+          <div class="planner-actions">
+            <button id="save-source-guard" class="primary">Save source guard</button>
+            <button id="reset-source-guard" class="secondary">Reset source guard</button>
+          </div>
+          <p id="source-guard-status" class="headline compact-headline">No custom source guard rules saved yet.</p>
+        </section>
+
+        <section class="panel planner-panel" data-workspace-view="import" hidden>
+          <div class="panel-head">
+            <h2>SRM Syllabus Navigator</h2>
+            <p>Paste a full SRM syllabus, unit outline, or topic list. Recall will map coverage by module.</p>
+          </div>
+          <label class="planner-label" for="syllabus-input">Supports units, modules, course titles, comma-separated topics, and line-by-line targets.</label>
+          <div class="preset-block">
+            <span class="planner-label compact-label">Quick SRM presets</span>
+            <div id="syllabus-presets" class="preset-row"></div>
+          </div>
+          <textarea id="syllabus-input" class="syllabus-input" placeholder="Course Title: Operating Systems&#10;Unit I: Processes, Threads, CPU Scheduling&#10;Unit II: Deadlocks, Memory Management&#10;CO1: Explain scheduling and context switching"></textarea>
+          <div class="planner-actions">
+            <button id="save-syllabus" class="primary">Save syllabus</button>
+            <button id="clear-syllabus" class="secondary">Clear syllabus</button>
+          </div>
+          <div class="planner-course">
+            <span class="course-label">Detected course</span>
+            <strong id="course-label" class="course-value">No syllabus loaded yet.</strong>
+          </div>
+          <div class="coverage-strip">
+            <div class="coverage-card">
+              <span>Covered</span>
+              <strong id="covered-count">0</strong>
+            </div>
+            <div class="coverage-card">
+              <span>Missing</span>
+              <strong id="missing-count">0</strong>
+            </div>
+            <div class="coverage-card">
+              <span>Weak</span>
+              <strong id="weak-count">0</strong>
+            </div>
+          </div>
+          <div class="passport-columns">
+            <div>
+              <h3>Covered Topics</h3>
+              <ul id="covered-topics" class="list"></ul>
+            </div>
+            <div>
+              <h3>Still Missing</h3>
+              <ul id="missing-topics" class="list"></ul>
+            </div>
+          </div>
+          <div class="module-panel">
+            <div class="panel-head compact">
+              <h3>Module Coverage</h3>
+              <p>Coverage, weak areas, and missing units grouped the way faculty usually think about them.</p>
+            </div>
+            <div id="module-coverage" class="module-grid"></div>
+          </div>
+        </section>
+
+        <section class="panel document-panel" data-workspace-view="import" hidden>
+          <div class="panel-head">
+            <h2>Document Studio</h2>
+            <p>Import PDFs, PPTX decks, DOCX files, local study text, or audio/video lectures to generate cleaner notes, quizzes, flashcards, and memory-ready Recall sessions. This is the best path for downloaded The Helper resources, local files, and offline speech-based study material.</p>
+          </div>
+          <div class="document-actions">
+            <input id="document-input" class="document-input" type="file" accept=".pdf,.pptx,.docx,.txt,.md,.mp3,.wav,.m4a,.aac,.ogg,.webm,.mp4,.mov,.m4v" />
+            <button id="import-document" class="primary">Import into Recall</button>
+          </div>
+          <p id="document-status" class="headline compact-headline">No document imported in this session.</p>
+          <div class="passport-columns">
+            <div>
+              <h3>Study Brief</h3>
+              <div id="document-summary" class="history-list"></div>
+            </div>
+            <div>
+              <h3>Quiz Preview</h3>
+              <div id="document-quiz" class="history-list"></div>
+            </div>
+          </div>
+          <div class="passport-columns document-pack-columns">
+            <div>
+              <h3>Study Outline</h3>
+              <ul id="document-notes" class="list"></ul>
+            </div>
+            <div>
+              <h3>Flashcard Preview</h3>
+              <div id="document-flashcards" class="history-list"></div>
+            </div>
+          </div>
+          <div class="passport-columns document-pack-columns">
+            <div>
+              <h3>Mock Interview</h3>
+              <div id="document-interview" class="history-list"></div>
+            </div>
+            <div>
+              <h3>Project Ideas</h3>
+              <div id="document-projects" class="history-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel graph-panel" data-workspace-view="evidence" hidden>
+          <div class="panel-head">
+            <h2>Knowledge Constellation</h2>
+            <p>Your strongest concept links across captured sessions.</p>
+          </div>
+          <svg id="graph-svg" viewBox="0 0 600 420" aria-label="Knowledge graph"></svg>
+        </section>
+
+        <section class="panel audit-panel" data-workspace-view="evidence" hidden>
+          <div class="panel-head ai-panel-head">
+            <div>
+              <h2>Capture Audit Log</h2>
+              <p>Explainable capture decisions for judges: why Recall accepted, merged, or rejected each source.</p>
+            </div>
+            <div class="ai-actions">
+              <button id="clear-audit-log" class="secondary">Clear audit log</button>
+            </div>
+          </div>
+          <div id="audit-log" class="history-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <button id="mentor-toggle" class="mentor-fab" type="button">AI Mentor</button>
+    <aside id="mentor-widget" class="mentor-widget" hidden>
+      <div class="mentor-widget-head">
+        <div>
+          <p class="eyebrow">Recall AI</p>
+          <h2>Study Assistant</h2>
+          <p id="mentor-provider-copy" class="panel-copy">Choose a grounded response style and ask from your captured study memory.</p>
+        </div>
+        <button id="mentor-close" class="secondary mentor-close" type="button">Close</button>
+      </div>
+      <div id="mentor-provider-row" class="mentor-provider-row">
+        <button class="provider-chip active" data-mentor-provider="recall" type="button">Recall Local</button>
+        <button class="provider-chip" data-mentor-provider="python" type="button">Python AI</button>
+        <button class="provider-chip" data-mentor-provider="openrouter" type="button">OpenRouter</button>
+        <button class="provider-chip" data-mentor-provider="gemini" type="button">Gemini</button>
+        <button class="provider-chip" data-mentor-provider="deep" type="button">Deep AI</button>
+      </div>
+      <details class="provider-settings">
+        <summary>AI provider settings</summary>
+        <p class="panel-copy">Optional. Add your own Python AI endpoint, Gemini key, or OpenRouter key to use real AI for Mentor and imported study documents.</p>
+        <div class="provider-settings-grid">
+          <label class="provider-field provider-field-wide">
+            <span>Python AI endpoint</span>
+            <input id="python-ai-endpoint" class="provider-input" type="text" placeholder="http://127.0.0.1:8008" />
+            <div class="provider-health-row">
+              <span id="python-ai-health-badge" class="history-pill provider-health idle">Checking…</span>
+              <span id="python-ai-health-copy" class="panel-copy compact-status">Recall will check whether your local Python AI backend is reachable.</span>
+            </div>
+          </label>
+          <label class="provider-field">
+            <span>Gemini API key</span>
+            <input id="gemini-api-key" class="provider-input" type="password" placeholder="Paste Gemini API key" />
+          </label>
+          <label class="provider-field">
+            <span>Gemini model</span>
+            <input id="gemini-model" class="provider-input" type="text" placeholder="gemini-2.0-flash" />
+          </label>
+          <label class="provider-field">
+            <span>OpenRouter API key</span>
+            <input id="openrouter-api-key" class="provider-input" type="password" placeholder="Paste OpenRouter API key" />
+          </label>
+          <label class="provider-field">
+            <span>OpenRouter model</span>
+            <input id="openrouter-model" class="provider-input" type="text" placeholder="openrouter/auto" />
+          </label>
+          <label class="provider-field provider-checkbox">
+            <span>Auto-enhance imported docs</span>
+            <input id="cloud-import-enhance" type="checkbox" />
+          </label>
+          <label class="provider-field">
+            <span>Preferred import provider</span>
+            <select id="cloud-import-provider" class="provider-input">
+              <option value="auto">Auto</option>
+              <option value="python">Python AI</option>
+              <option value="gemini">Gemini</option>
+              <option value="openrouter">OpenRouter</option>
+            </select>
+          </label>
+        </div>
+        <div class="planner-actions mentor-actions compact">
+          <button id="save-provider-settings" class="secondary" type="button">Save provider settings</button>
+        </div>
+        <p id="provider-settings-status" class="panel-copy compact-status">Local-only mode is active.</p>
+      </details>
+      <textarea id="mentor-question" class="syllabus-input mentor-input" placeholder="Ask something like: Teach binomial distribution from my latest lecture, compare it with Poisson, or quiz me on Unit 2."></textarea>
+      <div class="planner-actions mentor-actions">
+        <button id="mentor-ask" class="primary" type="button">Ask Recall</button>
+        <button id="mentor-quiz" class="secondary" type="button">Quiz me</button>
+        <button id="mentor-latest" class="secondary" type="button">Teach latest</button>
+      </div>
+      <div id="mentor-response" class="history-list"></div>
+    </aside>
+
+    <script src="../node_modules/jszip/dist/jszip.min.js"></script>
+    <script src="../lib/shared.js"></script>
+    <script src="../lib/db.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
