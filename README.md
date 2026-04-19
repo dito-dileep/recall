@@ -1,95 +1,119 @@
 # Recall
 
-Recall is a local-first AI study memory extension built for students who learn across YouTube, LMS portals, notes websites, PDFs, PPTs, and imported study material and then forget what they actually covered.
+<p align="center">
+  <img src="docs/images/03-dashboard-overview-dark.png" alt="Recall dark dashboard hero" width="100%" />
+</p>
 
-It was built for **Day Zero 2.0 - Hack the Knight** and shaped as a real student product, not just a hackathon demo.
+<p align="center">
+  <strong>Local-first AI study memory for students who learn across tabs, PDFs, PPTs, videos, LMS portals, and imported notes.</strong>
+</p>
 
-## Event
+<p align="center">
+  <img src="https://img.shields.io/badge/Browser%20Extension-Local%20First-0b1220?style=for-the-badge&logo=googlechrome&logoColor=00f7ff" alt="Local-first badge" />
+  <img src="https://img.shields.io/badge/Privacy-Structured%20Memory-0b1220?style=for-the-badge&logo=shield&logoColor=00f7ff" alt="Privacy badge" />
+  <img src="https://img.shields.io/badge/AI-Edge%20%2B%20Python-0b1220?style=for-the-badge&logo=openai&logoColor=00f7ff" alt="AI badge" />
+  <img src="https://img.shields.io/badge/Hackathon-Day%20Zero%202.0-0b1220?style=for-the-badge&logo=github&logoColor=00f7ff" alt="Hackathon badge" />
+</p>
 
-- **Hackathon:** Day Zero 2.0 - Hack the Knight
-- **Institution:** SRM Institute of Science and Technology
-- **Track fit:** AI / ML, Edge AI, Open Innovation
-
-## Team
-
-- **Dito Dileep** - RA2411026010050
-- **Adithya R Nath** - RA2411026010003
-- **Shreya Medimi** - RA2411026010037
-- **Muhammed Adnan Abdullah** - RA2411026011207
-
-## Problem
-
-Students study across:
-
-- YouTube lectures
-- Google Classroom
-- Coursera / Udemy / NPTEL / SWAYAM / SoloLearn
-- BYJU'S and similar learning websites
-- The Helper SRM resource hub
-- local PDFs, PPTs, DOCX files, TXT notes
-- downloaded audio and video lectures
-
-The result is always the same:
-
-- history becomes useless
-- important topics get mixed with distraction tabs
-- revision becomes random
-- students do not know what to revise first
-- raw notes are too messy to reuse
-
-Recall solves that by quietly turning study activity into structured memory, notes, revision prompts, flashcards, syllabus coverage, and explainable study guidance.
-
-## What Recall Does
-
-Recall is designed around four questions:
+Recall helps students answer four practical questions:
 
 1. What did I actually study?
 2. What should I revise next?
 3. Can I trust this source as real study material?
 4. How does this connect to exams, projects, or placements?
 
-## Current Product Shape
+Instead of acting like a normal browser history tool, Recall tries to turn scattered academic activity into structured memory, readable notes, flashcards, revision prompts, trusted-source guidance, and explainable evidence.
 
-Recall currently includes:
+## Quick Links
 
-- `Study Mode` in the popup for passive educational capture
-- `Media Guard` to block entertainment-heavy or weak-signal pages
-- transcript-aware YouTube lecture capture
-- source-aware capture for study sites like LMS pages, course platforms, BYJU'S, and The Helper
-- local file support for browser-opened PDFs, PPTs, DOCXs, TXTs, and Markdown
-- imported study packs for PDF, PPTX, DOCX, audio, and video
-- a notes-first `Study Now` workspace
-- a guided `Study Session Mode` that moves from notes -> flashcards -> quiz -> apply
-- visual flashcards inside the app
-- SRM syllabus mapping and presets
-- trusted study sources + personal source guard
-- evidence mode with audit logs and knowledge constellation
-- AI Mentor with local, deep, cloud, and Python backend modes
-- printable study passport
-- light theme and dark theme
+- Full documentation: [Markdown](docs/RECALL_DOCUMENTATION_AND_EXPANSION_IDEA.md) | [Word](docs/RECALL_DOCUMENTATION_AND_EXPANSION_IDEA.docx)
+- Short summary: [Markdown](docs/RECALL_SUMMARY_OVERVIEW.md) | [Word](docs/RECALL_SUMMARY_OVERVIEW.docx)
+- Roadmap: [ROADMAP.md](ROADMAP.md)
+- Demo script: [DEMO_SCRIPT.md](DEMO_SCRIPT.md)
 
-## Supported Study Sources
+## Team
 
-Recall is designed to work well with:
+Team `LOQIN`
 
-- educational YouTube videos
-- Google Classroom
-- Coursera
-- Udemy
-- SoloLearn
-- NPTEL
-- SWAYAM
-- BYJU'S
-- The Helper - SRM student study resource hub
-- local browser-opened study files
-- imported study material through `Document Studio`
+- Dito Dileep - RA2411026010050
+- Adithya R Nath - RA2411026010003
+- Shreya Medimi - RA2411026010037
+- Muhammed Adnan Abdullah - RA2411026011207
 
-It aggressively rejects or penalizes:
+## Why Recall Exists
 
-- WhatsApp and messaging pages
-- social / chatter-heavy pages
-- trailers, gameplay, and entertainment media
-- weak-signal pages that look unrelated to real learning
+Students do not study in one clean place. They move between:
+
+- YouTube lectures
+- LMS portals and classroom pages
+- Coursera, Udemy, NPTEL, SWAYAM, SoloLearn
+- The Helper and other reference hubs
+- local PDFs, PPTs, DOCX files, TXT notes, and Markdown
+- downloaded audio and video lectures
+
+The result is familiar:
+
+- important topics get lost in messy browsing history
+- revision order becomes random
+- raw notes are too messy to reuse
+- students cannot tell what they covered or what matters next
+
+Recall is built to fix that with a local-first memory layer instead of a generic archive.
+
+## What Recall Does
+
+| Area | What it gives the user |
+| --- | --- |
+| `Capture` | Passive educational capture through `Study Mode` |
+| `Filtering` | Distraction rejection and weak-signal blocking through `Media Guard` |
+| `Understanding` | Topic extraction, summaries, subject inference, and source-aware memory |
+| `Study Output` | Notes, flashcards, quiz prompts, guided sessions, and revision queues |
+| `Import` | PDFs, PPTX, DOCX, TXT, Markdown, audio, and video support |
+| `Explainability` | Audit logs, source confidence, and evidence mode |
+| `AI Support` | Local AI, optional deep AI, offline speech AI, and optional Python/cloud assistants |
+
+## Product Walkthrough
+
+### Popup and quick controls
+
+`Study Mode` and `Media Guard` keep Recall visible and lightweight during actual browsing.
+
+<p align="center">
+  <img src="docs/images/01-popup-study-mode.png" alt="Recall popup with Study Mode and Media Guard" width="78%" />
+</p>
+
+### Dashboard overview
+
+The dashboard turns captures into sessions, topics, sources, coverage, and next-step guidance.
+
+<p align="center">
+  <img src="docs/images/02-dashboard-overview-light.png" alt="Recall dashboard light theme" width="49%" />
+  <img src="docs/images/03-dashboard-overview-dark.png" alt="Recall dashboard dark theme" width="49%" />
+</p>
+
+### Flashcards and active recall
+
+Recall does not stop at storing content. It turns captured material into revision-ready active recall flows.
+
+<p align="center">
+  <img src="docs/images/04-flashcards-workspace.png" alt="Recall flashcards workspace" width="78%" />
+</p>
+
+### AI Mentor and Edge AI
+
+The mentor layer and edge AI pipeline help convert captured sessions into guided learning support.
+
+<p align="center">
+  <img src="docs/images/05-ai-mentor-and-edge-copilot.png" alt="Recall AI Mentor and Edge AI Copilot" width="78%" />
+</p>
+
+### Import and trusted-source controls
+
+Source trust matters. Recall supports trusted-source controls and imported study material rather than blindly treating all pages the same.
+
+<p align="center">
+  <img src="docs/images/06-import-and-source-guard.png" alt="Recall import workflow and source guard" width="78%" />
+</p>
 
 ## Core Workspaces
 
@@ -97,34 +121,32 @@ It aggressively rejects or penalizes:
 
 Best for:
 
-- judges
-- first-time users
 - fast product understanding
+- judge demos
+- first-time users
 
 Shows:
 
-- what Recall captured
-- why it trusted those sources
+- captured sessions
+- trusted sources
 - weekly momentum
 - revision direction
-- placement snapshot
-- AI summary and next-step guidance
+- placement-facing insights
 
 ### Study Now
 
 Best for:
 
-- actual revision
+- practical revision
+- reading short usable notes
 - deciding what to do next
-- reading short usable notes instead of raw extracted text
 
 Shows:
 
 - one recommended starting point
 - quick notes
 - source usage guidance
-- 30-minute study sprint
-- guided session mode
+- guided study flow
 
 ### Flashcards
 
@@ -134,330 +156,82 @@ Best for:
 - spaced repetition
 - grading memory with `Again / Hard / Good / Easy`
 
-Recall also supports optional TSV export for Anki, but the main flashcard flow is inside Recall itself.
-
-### Import & Syllabus
+### Import and Syllabus
 
 Best for:
 
-- importing PDF, PPTX, DOCX, TXT, Markdown
-- importing audio and video lectures
-- building a fuller study pack from files
-- comparing captured learning against an SRM syllabus
+- importing files and offline material
+- comparing captures against an SRM syllabus
 - using trusted source shortcuts
 
 ### Evidence
 
 Best for:
 
+- explainability
+- proof that Recall is not blindly capturing everything
 - demo credibility
-- explainable AI
-- proving the product is not blindly capturing everything
-
-Shows:
-
-- audit log
-- capture reasons
-- source confidence
-- knowledge constellation
 
 ## AI Stack
 
-Recall uses multiple AI layers, not just one chatbot.
+Recall uses multiple AI layers instead of one generic chatbot.
 
-### 1. Recall Local
+| Layer | Role |
+| --- | --- |
+| `Recall Local` | Core study reasoning, notes, quiz prompts, flashcards, and guidance |
+| `SourceGuard` | Source trust scoring for educational vs weak-signal material |
+| `CardRank` | Flashcard quality scoring and reranking |
+| `Deep AI` | Optional stronger semantic inference through `Transformers.js` |
+| `Offline Speech AI` | Optional Whisper-based transcription for imported audio/video |
+| `Python AI` | Broader assistant behavior through `python_ai/` |
+| `Optional Cloud AI` | Gemini and OpenRouter support when configured by the user |
 
-This is the built-in local intelligence layer in the extension.
+## Privacy and Performance Snapshot
 
-Used for:
+Recall is designed to be local-first and practical on normal laptops.
 
-- educational vs non-educational reasoning
-- topic extraction
-- note generation
-- quiz prompt generation
-- flashcard generation
-- revision planning
-- study path guidance
+| Mode | CPU | Memory | Storage |
+| --- | --- | --- | --- |
+| Default extension usage | Low, with short spikes during capture | Low to moderate | Low to moderate |
+| Optional deep AI / transcription | Moderate to temporarily high during local model work | Moderate to temporarily high | Moderate because model caches and transcripts grow locally |
 
-### 2. SourceGuard
+Key points:
 
-This is Recall's custom local source-scoring model.
+- structured data is stored locally with browser storage and `IndexedDB`
+- heavy AI paths are optional instead of always-on
+- Recall focuses on meaningful session memory, not raw surveillance-style logging
 
-Used for:
+## Documentation Package
 
-- deciding whether a page is trustworthy for study capture
-- penalizing messaging/social/entertainment pages
-- rewarding trusted hosts and strong study-language signals
-- adapting source trust using accepted-host history
+This repo now includes a fuller documentation set for project sharing and expansion planning:
 
-### 3. CardRank
+- [RECALL_DOCUMENTATION_AND_EXPANSION_IDEA.md](docs/RECALL_DOCUMENTATION_AND_EXPANSION_IDEA.md)
+- [RECALL_SUMMARY_OVERVIEW.md](docs/RECALL_SUMMARY_OVERVIEW.md)
+- Word versions of both documents for external sharing
+- screenshot assets in [`docs/images/`](docs/images/)
 
-This is Recall's custom local flashcard-quality model.
+The docs package covers:
 
-Used for:
+- current product scope
+- expansion into a future work-memory system
+- app vs sandbox comparison
+- performance impact discussion
+- comparable products and why Recall is different
 
-- scoring flashcards for clarity, specificity, evidence, and usefulness
-- reranking cards so the best cards rise first
-- refining weak cards into stronger ones before surfacing them
+## Tech Notes
 
-### 4. Deep AI
+- Extension manifest: [manifest.json](manifest.json)
+- Background logic: [background.js](background.js)
+- Popup UI: [popup/popup.html](popup/popup.html)
+- Dashboard UI: [dashboard/dashboard.html](dashboard/dashboard.html)
+- Local data layer: [lib/db.js](lib/db.js)
+- Shared memory logic: [lib/shared.js](lib/shared.js)
+- Python assistant path: [python_ai/](python_ai/)
 
-This is the stronger local semantic mode.
+## Closing
 
-Used for:
+Recall is not trying to be just another note tool, browser logger, or chatbot wrapper. Its core idea is simple:
 
-- deeper semantic embeddings
-- stronger subject inference
-- better concept similarity
-- improved prompt generation
+**turn real study activity into usable memory and next-step learning output.**
 
-Implemented through `Transformers.js` in the browser.
-
-### 5. Offline Speech AI
-
-Used for:
-
-- transcription of imported audio/video lectures
-- converting those transcripts into notes, quiz prompts, and flashcards
-
-Implemented with local Whisper through `Transformers.js`.
-
-### 6. Python AI
-
-Recall also includes a proper Python backend in `python_ai/`.
-
-Used for:
-
-- broader chat
-- normal assistant replies
-- teaching beyond only captured context
-- document enhancement
-
-This gives the project a real Python AI service architecture instead of only browser-side JS.
-
-### 7. Optional Cloud AI
-
-If configured by the user, Recall can also use:
-
-- Gemini
-- OpenRouter
-
-These are optional and not required for the main experience.
-
-## Why Hugging Face Is Used
-
-Recall uses Hugging Face through `Transformers.js` for browser-runnable local models.
-
-That is used for:
-
-- local semantic embeddings in Deep AI
-- local Whisper transcription for imported lecture media
-
-This is not the Hugging Face cloud API by default. It is primarily local model execution after model download and caching.
-
-## Offline Behavior
-
-Recall is **local-first**, not "internet-free for everything."
-
-### Works offline after setup/caching
-
-- dashboard and popup UI
-- Recall Local reasoning
-- SourceGuard
-- CardRank
-- saved sessions and study packs
-- flashcards and revision queue
-- SRM syllabus matching
-- Deep AI after the model is already downloaded and cached
-- imported audio/video transcription after Whisper is already downloaded and cached
-- Python AI if you run a local model/backend
-
-### Does not work fully offline
-
-- browsing YouTube, Coursera, BYJU'S, Classroom, etc.
-- optional Gemini / OpenRouter calls
-- first-time download of local Deep AI / Whisper model weights
-
-## Trusted Study Workflow
-
-Best practical workflow:
-
-1. Capture lecture pages, LMS pages, course websites, and study portals
-2. Download strong materials when needed
-3. Import PDFs / PPTs / DOCXs / lecture audio or video through `Document Studio`
-4. Use `Study Now` for notes and sprint guidance
-5. Use `Flashcards` and review grading for retention
-6. Use `Evidence` to show why Recall trusted or rejected each source
-
-## Python AI Backend
-
-Recall includes a Python backend under `python_ai/`.
-
-### Setup
-
-From the project root:
-
-```powershell
-python -m venv python_ai\.venv
-python_ai\.venv\Scripts\python -m pip install -r python_ai\requirements.txt
-copy .env.example .env
-```
-
-Start the backend:
-
-```powershell
-python_ai\.venv\Scripts\python python_ai\app.py
-```
-
-Default local endpoint:
-
-```text
-http://127.0.0.1:8008
-```
-
-You can use this with:
-
-- a local Ollama model
-- another OpenAI-compatible local server
-
-## Local Setup
-
-1. Install dependencies:
-
-```powershell
-npm install
-```
-
-2. Open:
-
-```text
-brave://extensions
-```
-
-3. Turn on `Developer mode`
-4. Click `Load unpacked`
-5. Select the `recall` folder
-6. Reload the extension after changes
-
-If you want browser-opened local files to be captured:
-
-- open Recall in `brave://extensions`
-- enable `Allow access to file URLs`
-
-## Dev Checks
-
-Run:
-
-```powershell
-npm run check
-```
-
-For the Python backend:
-
-```powershell
-python -m py_compile python_ai\app.py python_ai\service.py python_ai\prompts.py
-```
-
-## Demo Flow
-
-1. Open the popup
-2. Show `Study Mode` and `Media Guard`
-3. Capture one real lecture page or import one real file
-4. Open `Overview`
-5. Show:
-   - total sessions
-   - source trust
-   - recall score
-   - weekly momentum
-   - placement snapshot
-6. Open `Study Now`
-7. Show:
-   - recommended starting topic
-   - readable notes
-   - guided session mode
-   - sprint plan
-8. Open `Flashcards`
-9. Flip and grade cards
-10. Open `Import & Syllabus`
-11. Show:
-   - SRM presets
-   - trusted study sources
-   - personal source guard
-   - document studio
-12. Open `Evidence`
-13. Show:
-   - capture audit log
-   - source guard signals
-   - knowledge constellation
-14. Open the printable passport
-
-## Project Structure
-
-- `manifest.json` - extension entry point
-- `background.js` - capture orchestration and message handling
-- `content/content.js` - page extraction and page-specific source logic
-- `lib/shared.js` - core intelligence, note generation, flashcards, source scoring, dashboard model
-- `lib/db.js` - IndexedDB storage layer
-- `popup/` - popup controls
-- `dashboard/` - main product UI
-- `python_ai/` - optional Python AI backend
-- `assets/` - icons and branding
-- `.env.example` - backend environment template
-
-## GitHub Upload Guide
-
-This folder currently is **not yet initialized as a git repository**, so do this from the `recall` folder:
-
-```powershell
-git init
-git branch -M main
-git add .
-git commit -m "Initial Recall hackathon build"
-```
-
-Then create a new GitHub repo and connect it:
-
-```powershell
-git remote add origin https://github.com/YOUR_USERNAME/recall.git
-git push -u origin main
-```
-
-Useful notes:
-
-- do **not** upload `python_ai/.venv`
-- do **not** upload your real `.env`
-- `.env.example` is safe to commit
-- if Git asks for login, use GitHub Desktop / browser auth / PAT as needed
-
-## Recommended Repo Name
-
-- `recall`
-- `recall-study-memory-extension`
-- `recall-hack-the-knight`
-
-## What Makes Recall Different
-
-- it is not only a note summarizer
-- it is not only a chatbot
-- it is not only a browser extension
-
-Recall combines:
-
-- passive study capture
-- local-first AI
-- explainable source trust
-- flashcard quality scoring
-- revision planning
-- SRM-aware syllabus mapping
-- judge-facing evidence mode
-- optional Python AI backend
-
-That makes it feel like a real student product instead of a one-feature demo.
-
-## Next Strong Build Steps
-
-1. Improve note quality for harder mixed-format study websites and viewer-heavy pages.
-2. Add richer The Helper viewer import flow.
-3. Add stronger multilingual offline lecture transcription.
-4. Add better Python AI teaching mode and conversation memory.
-5. Add more department-specific SRM presets and study packs.
+That is what makes the current extension valuable, and it is also what makes the longer-term expansion idea compelling.
